@@ -1,25 +1,29 @@
-# MCP Contract Test Generator Agent
+# MCP 契约测试生成 Agent
 
-An LLM-powered automation tool that generates, executes, and validates contract tests for MCP (Model Context Protocol) tools. 
+基于 LLM 的自动化契约测试生成工具，用于解决 MCP (Model Context Protocol) 工具接入时，手写参数校验、权限等测试成本高且易遗漏的问题。
 
-## 🎯 Overview
-When integrating new tools via MCP, manually writing contract tests (valid params, invalid params, permission checks) is time-consuming and error-prone. This project builds a minimal automated loop to generate tests and validate MCP tool contracts, ensuring tools behave exactly as defined.
+## 🎯 核心架构设计
 
-## 🛡️ Core Design: Dual Failure Classification
-The most critical part of the agent is **preventing the LLM from "cheating" to pass tests**. It implements a strict dual classification logic:
-- **`test_error`**: The generated test itself is wrong (e.g., missing imports, syntax errors). The agent automatically feeds the error back to the LLM to fix the test (capped at 3 rounds).
-- **`tool_bug`**: The test is correct according to the contract, but the tool implementation returns invalid data (e.g., returning a string `'10'` instead of integer `10`). The agent **stops immediately, preserves the test, and flags a bug**. It **never** weakens assertions just to pass.
-- **Contract Coverage**: Outputs a field-level coverage report (explicitly distinguished from code branch coverage).
+本项目实现了一套最小的自动化闭环：`提取 Schema → 生成用例 → 隔离执行 → 失败分类 → 自动修正 → 输出契约覆盖`。
 
-## 🚀 Features & Evidence
-- **Real LLM Verified**: Successfully called DeepSeek API to generate 9 valid test cases that passed in the first round.
-- **Bug Detection**: Injected a flaw (returning `'10'`) and successfully triggered the `tool_bug` stop logic (1 failed, 8 passed).
-- **Isolated Execution**: Uses `subprocess` with a 30s timeout to execute tests, protecting the main process.
-- **AST Validation**: Validates LLM-generated code before writing to the filesystem.
+**最核心的设计：双重失败分类（防止 LLM 为了通过测试而“作弊”）**
+Agent 不会为了强行通过测试而放宽断言，而是严格区分两种失败：
+1. **`test_error`（测试代码写错）**：如语法错误、缺失导入等。此时允许将报错反馈给 LLM 并自动修正（最多 3 轮）。
+2. **`tool_bug`（业务工具违约）**：如果测试断言与接口契约完全一致，但被测工具实际返回了错误数据（例如契约要求返回 `int`，实际返回 `'10'`），Agent 会**立即停止修正，保留测试现场并标记工具 Bug**。
 
-## 🛠️ Quick Start
-1. Set environment variables (e.g., DeepSeek):
+## 🚀 效果验证与项目边界
+
+- **真实 LLM 验证**：实际调用 DeepSeek API 成功生成 9 个有效测试用例，首轮全部通过。
+- **异常阻断验证**：通过故意注入错误数据（返回字符串而非整数），成功触发 `tool_bug` 停止逻辑（结果：1 failed, 8 passed）。
+- **契约覆盖清单**：输出字段级契约覆盖，并明确界定其与代码分支覆盖率（Branch Coverage）的区别。
+- **安全执行**：使用 `subprocess` 隔离执行测试（限制 30 秒超时），并在写入文件前通过 `ast.parse` 做语法预校验。
+
+*注：本项目为验证 Agent 闭环可行性的原型，`tool_adapter.py` 为本地模拟实现。详细运行记录见下方。*
+
+## 🛠️ 快速开始
+
+1. 配置环境变量（例如 DeepSeek）：
    ```bash
-   export LLM_API_KEY="your_api_key"
+   export LLM_API_KEY="你的密钥"
    export LLM_BASE_URL="https://api.deepseek.com"
    export LLM_MODEL="deepseek-flash"
