@@ -1,0 +1,12 @@
+{
+  "status": "疑似工具 bug，停止修正",
+  "rounds": [
+    {
+      "round": 1,
+      "returncode": 1,
+      "stdout": "F........                                                                [100%]\n================================== FAILURES ===================================\n________ test_sync_inventory_valid_parameters_returns_expected_fields _________\noutput\\generated_tests\\test_tool_bug.py:21: in test_sync_inventory_valid_parameters_returns_expected_fields\n    assert isinstance(result[\"synced_count\"], int)\nE   AssertionError: assert False\nE    +  where False = isinstance('10', int)\n=================================== PASSES ====================================\n=========================== short test summary info ===========================\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_date_type_error\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_store_type_error\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_missing_date_required\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_missing_store_required\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_store_enum_out_of_range\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_date_format_non_ascii_digits\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_date_format_invalid_calendar_date\nPASSED output/generated_tests/test_tool_bug.py::test_sync_inventory_without_permission_raises_permission_error\nFAILED output/generated_tests/test_tool_bug.py::test_sync_inventory_valid_parameters_returns_expected_fields\n1 failed, 8 passed in 0.06s\n",
+      "stderr": "",
+      "classification": "tool_bug"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "unknown，停止修正",
+  "rounds": [
+    {
+      "round": 1,
+      "returncode": 1,
+      "stdout": "F........                                                                [100%]\n================================== FAILURES ===================================\n_________________________________ test_valid __________________________________\noutput\\selfcheck_tmp_20261028_1\\test_tool_bug_preserves_test0\\generated_tests\\test_contract.py:7: in test_valid\n    assert result[\"success\"] is False\nE   assert True is False\n=================================== PASSES ====================================\n=========================== short test summary info ===========================\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_invalid[params0-TypeError]\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_invalid[params1-TypeError]\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_invalid[params2-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_invalid[params3-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_invalid[params4-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_invalid[params5-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_invalid[params6-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_permission_denied\nFAILED output/selfcheck_tmp_20261028_1/test_tool_bug_preserves_test0/generated_tests/test_contract.py::test_valid\n1 failed, 8 passed in 0.04s\n",
+      "stderr": "",
+      "classification": "unknown"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "unknown，停止修正",
+  "rounds": [
+    {
+      "round": 1,
+      "returncode": 1,
+      "stdout": "F                                                                        [100%]\n================================== FAILURES ===================================\n________________________________ test_problem _________________________________\noutput\\selfcheck_tmp_20261028_1\\test_unknown_stops0\\generated_tests\\test_contract.py:2: in test_problem\n    raise RuntimeError('ambiguous')\nE   RuntimeError: ambiguous\n=========================== short test summary info ===========================\nFAILED output/selfcheck_tmp_20261028_1/test_unknown_stops0/generated_tests/test_contract.py::test_problem\n1 failed in 0.03s\n",
+      "stderr": "",
+      "classification": "unknown"
+    }
+  ]
+}

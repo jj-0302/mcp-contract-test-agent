@@ -1,0 +1,12 @@
+根据下面的 schema 和 permission_rules 生成 pytest 测试。只输出 Python 代码，不要 markdown 代码块包裹，不要解释文字。
+使用 from tool_adapter import invoke_tool 调用目标；调用签名为 invoke_tool(tool_name, parameters: dict, permissions: list)。
+禁止在测试内实现、替换或 mock 目标工具。使用 import pytest，测试函数命名清晰。
+覆盖合法参数、非法参数（类型错误/缺必填/枚举越界/格式错误）、权限越权（无权限应拒绝）。
+类型错误用 pytest.raises(TypeError)，缺必填、枚举越界、格式错误用 pytest.raises(ValueError)，无权限用 pytest.raises(PermissionError)。
+合法返回使用 assert 验证所有返回字段的存在及类型；integer 应排除 bool。不要猜测具体库存数量。
+示例适配器约定：MMDD 为四位 ASCII 数字且是有效日期，允许 0229；有权限传 ["inventory:write"]，无权限传 []。
+这只是本地示例约定，并非 JSON 定义隐含的真实业务契约。
+每个测试添加 @pytest.mark.contract(...) 标签用于静态字段清单：
+参数用 parameters=["date", "store"]；返回字段用 returns=["success", "synced_count", "errors"]；
+权限用 permission="allowed" 或 permission="denied"。标签只标记该函数实际测试的内容。
+禁止 skip、xfail、禁用断言或捕获 AssertionError。

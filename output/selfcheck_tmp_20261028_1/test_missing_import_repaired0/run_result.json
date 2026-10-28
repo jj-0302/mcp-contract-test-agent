@@ -1,0 +1,18 @@
+{
+  "status": "通过",
+  "rounds": [
+    {
+      "round": 1,
+      "returncode": 2,
+      "stdout": "\n=================================== ERRORS ====================================\n_ ERROR collecting output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py _\noutput\\selfcheck_tmp_20261028_1\\test_missing_import_repaired0\\generated_tests\\test_contract.py:3: in <module>\n    @pytest.mark.contract(parameters=[\"date\", \"store\"], returns=[\"success\", \"synced_count\", \"errors\"], permission=\"allowed\")\nE   NameError: name 'pytest' is not defined\n=========================== short test summary info ===========================\nERROR output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.06s\n",
+      "stderr": "",
+      "classification": "test_error"
+    },
+    {
+      "round": 2,
+      "returncode": 0,
+      "stdout": ".........                                                                [100%]\n=================================== PASSES ====================================\n=========================== short test summary info ===========================\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_valid\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_invalid[params0-TypeError]\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_invalid[params1-TypeError]\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_invalid[params2-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_invalid[params3-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_invalid[params4-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_invalid[params5-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_invalid[params6-ValueError]\nPASSED output/selfcheck_tmp_20261028_1/test_missing_import_repaired0/generated_tests/test_contract.py::test_permission_denied\n9 passed in 0.02s\n",
+      "stderr": ""
+    }
+  ]
+}

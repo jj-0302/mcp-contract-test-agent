@@ -1,0 +1,10 @@
+{
+  "tool_name": "sync_inventory",
+  "description": "按站点和日期同步库存（示例定义，用于验证闭环）",
+  "parameters": {
+    "date": {"type": "string", "required": true, "format": "MMDD"},
+    "store": {"type": "string", "required": true, "enum": ["us", "de", "ca", "uk", "fr", "jp", "au"]}
+  },
+  "returns": {"success": "boolean", "synced_count": "integer", "errors": "array"},
+  "permission": "inventory:write"
+}

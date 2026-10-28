@@ -1,0 +1,11 @@
+{
+  "status": "通过",
+  "rounds": [
+    {
+      "round": 1,
+      "returncode": 0,
+      "stdout": ".........                                                                [100%]\n=================================== PASSES ====================================\n=========================== short test summary info ===========================\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_valid_parameters_returns_expected_fields\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_date_type_error\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_store_type_error\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_missing_date_required\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_missing_store_required\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_store_enum_out_of_range\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_date_format_non_ascii_digits\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_date_format_invalid_calendar_date\nPASSED output/generated_tests/test_contract.py::test_sync_inventory_without_permission_raises_permission_error\n9 passed in 0.04s\n",
+      "stderr": ""
+    }
+  ]
+}
